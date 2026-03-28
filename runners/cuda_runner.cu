@@ -134,7 +134,7 @@ void cuda_stream_impl(int n, const int* routes_flat, int route_dim) {
     for (int i = 2; i <= tail_size; i++) total_perms *= i;
 
     const int sm_count = props.multiProcessorCount;
-    const long long desired = (long long)sm_count * 512;
+    const long long desired = (long long)sm_count * 1536;
     const int num_threads = (int)std::min(desired, total_perms);
 
     std::cout << "CUDA device: " << props.name << " (" << sm_count << " SMs)" << std::endl;

@@ -5,10 +5,18 @@
 #include "runners/multi_thread_runner.h"
 #include "runners/cuda_runner.h"
 #include <chrono>
+#include <csignal>
+#include <cstdlib>
 #include <iomanip>
+
+void signal_handler(int) {
+	_exit(1);
+}
 
 int main(int argc, char* argv[])
 {
+	std::signal(SIGINT, signal_handler);
+
 	int n = 5;
 	std::string mode = "multi";
 
